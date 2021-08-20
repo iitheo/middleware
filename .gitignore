@@ -2,6 +2,7 @@
 .idea/
 .env
 tmp/
+.vs/
 
 
 # Compiled source #
