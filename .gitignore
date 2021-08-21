@@ -3,7 +3,8 @@
 .env
 tmp/
 .vs/
-
+CMK.Middleware/CMK.Middleware.WebApplication/bin/Debug/
+CMK.Middleware/CMK.Middleware.WebApplication/obj/Debug/
 
 # Compiled source #
 ###################
