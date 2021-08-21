@@ -2,7 +2,7 @@
 .idea/
 .env
 tmp/
-.vs/
+.vs/*
 CMK.Middleware/CMK.Middleware.WebApplication/bin/Debug/
 CMK.Middleware/CMK.Middleware.WebApplication/obj/Debug/
 
