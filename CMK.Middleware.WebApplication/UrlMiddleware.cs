@@ -14,5 +14,13 @@ namespace CMK.Middleware.WebApplication
         {
             _next = next;
         }
+
+        public Task Invoke(HttpContext context)
+        {
+            if (context.Request.Path == "/")
+                context.Request.Path = "/api/values";
+
+            return _next(context);
+        }
     }
 }
