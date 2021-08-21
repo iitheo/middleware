@@ -2,7 +2,7 @@
 .idea/
 .env
 tmp/
-.vs/CMK.Middleware/
+.vs/
 CMK.Middleware/CMK.Middleware.WebApplication/bin/Debug/
 CMK.Middleware/CMK.Middleware.WebApplication/obj/Debug/
 
@@ -14,6 +14,11 @@ CMK.Middleware/CMK.Middleware.WebApplication/obj/Debug/
 *.exe
 *.o
 *.so
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
 
 # Packages #
 ############
