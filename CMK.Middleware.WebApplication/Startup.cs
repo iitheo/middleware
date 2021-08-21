@@ -85,6 +85,7 @@ namespace CMK.Middleware.WebApplication
 
             app.UseHttpsRedirection();
             //app.UseStaticFiles();
+            app.UseUrlMiddleware();
 
             app.UseRouting();
 
