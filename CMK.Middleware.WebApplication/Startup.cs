@@ -52,6 +52,20 @@ namespace CMK.Middleware.WebApplication
                 await context.Response.WriteAsync("<p>From middleware 2</p>");
                 await next();
             });
+
+            app.Map("/mysite",action => {
+                action.Use(async (context,next) => {
+                    await context.Response.WriteAsync("<p>Hello from</p>");
+                    await next();
+                });
+                action.Use(async (context, next) => {
+                    await context.Response.WriteAsync("<p>my other site.</p>");
+                    await next();
+                });
+                action.Run(async context => {
+                    await context.Response.WriteAsync("<p>End of mysite</p>");
+                });
+            });
             
 
             app.Run(async context => 
