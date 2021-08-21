@@ -41,16 +41,23 @@ namespace CMK.Middleware.WebApplication
                 app.UseHsts();
             }
 
-            app.Use(async (context, next) => 
+            app.Use(async (context, next) =>
             {
                 await context.Response.WriteAsync("<p>From middleware 1<p>");
                 await next();
             });
 
-            app.Use(async (context, next) => 
+            app.Use(async (context, next) =>
             {
                 await context.Response.WriteAsync("<p>From middleware 2</p>");
                 await next();
+            });
+
+            app.MapWhen(context => context.Request.Query.ContainsKey("name"), action => {
+                action.Run(async context => {
+                    var name = context.Request.Query["name"];
+                    await context.Response.WriteAsync($"<p>Hello {name}!</p>");
+                });
             });
 
             app.Map("/mysite",action => {
