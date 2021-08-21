@@ -49,8 +49,14 @@ namespace CMK.Middleware.WebApplication
 
             app.Use(async (context, next) => 
             {
-                await context.Response.WriteAsync("<p>from middleware 2</p>");
+                await context.Response.WriteAsync("<p>From middleware 2</p>");
                 await next();
+            });
+            
+
+            app.Run(async context => 
+            {
+                await context.Response.WriteAsync("<p>From RUN middleware</p>");
             });
 
 
