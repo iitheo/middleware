@@ -27,6 +27,7 @@ namespace CMK.Middleware.WebApplication
             //services.AddRazorPages();
             services.AddControllers();
             services.AddLogging();
+            services.AddSingleton<IPrinter, Printer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,45 +44,13 @@ namespace CMK.Middleware.WebApplication
                 app.UseHsts();
             }
 
-            //app.Use(async (context, next) =>
-            //{
-            //    await context.Response.WriteAsync("<p>From middleware 1<p>");
-            //    await next();
-            //});
 
-            //app.Use(async (context, next) =>
-            //{
-            //    await context.Response.WriteAsync("<p>From middleware 2</p>");
-            //    await next();
-            //});
+            //app.UseExtensions();
 
-            //app.MapWhen(context => context.Request.Query.ContainsKey("name"), action => {
-            //    action.Run(async context => {
-            //        var name = context.Request.Query["name"];
-            //        await context.Response.WriteAsync($"<p>Hello {name}!</p>");
-            //    });
-            //});
-
-            //app.Map("/mysite",action => {
-            //    action.Use(async (context,next) => {
-            //        await context.Response.WriteAsync("<p>Hello from</p>");
-            //        await next();
-            //    });
-            //    action.Use(async (context, next) => {
-            //        await context.Response.WriteAsync("<p>my other site.</p>");
-            //        await next();
-            //    });
-            //    action.Run(async context => {
-            //        await context.Response.WriteAsync("<p>End of mysite</p>");
-            //    });
-            //});
-
-
-            //app.Run(async context => 
-            //{
-            //    await context.Response.WriteAsync("<p>From RUN middleware</p>");
-            //});
-
+            app.UseMiddleware<CustomMiddleware>();
+            app.Run(async context => {
+                await context.Response.WriteAsync("<p>END</p>");
+            });
 
             app.UseHttpsRedirection();
             //app.UseStaticFiles();
